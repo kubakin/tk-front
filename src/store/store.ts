@@ -5,14 +5,12 @@ import type {Action} from '@reduxjs/toolkit';
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {reducer as adminUserReducer} from "../admin/data/redux/slices/user.slice";
 import {reducer as adminGameInstanceReducer} from "../admin/data/redux/slices/game-instance.slice";
-import {reducer as userGlobalReduced} from "../user/data/slices/global.slice";
 // import {reducer as userReducer} from "./ad";
 // import {reducer as gameInstanceSlice} from "./slices/game-instance.slice";
 
 export const rootReducer = combineReducers({
     adminUser: adminUserReducer,
     adminGameInstance: adminGameInstanceReducer,
-    userGlobalAuth: userGlobalReduced,
 })
 
 export const store = configureStore({

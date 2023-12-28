@@ -1,7 +1,7 @@
-import React, {memo, ReactNode, useEffect} from "react";
-import {Layout, notification} from 'antd';
+import React, {memo, ReactNode} from "react";
+import {Layout} from 'antd';
 import MenuComponent from "./Menu";
-import {useAdminSocket} from "../../hooks/use-socket";
+import AdminHeader from "./Header";
 
 const {Header, Content} = Layout;
 
@@ -10,17 +10,17 @@ export interface AdminLayoutInterface {
 }
 
 const AdminLayout: React.FC<AdminLayoutInterface> = (props) => {
-    const socket = useAdminSocket()
-    useEffect(() => {
-        socket.on('message', ({text, id}: { text: string, id: string }) => {
-            notification.info({message: 'Новое сообщение', description: text, key: 'msg'})
-        })
-    }, [socket])
+    // const socket = useAdminSocket()
+    // useEffect(() => {
+    //     socket.on('message', ({text, id}: { text: string, id: string }) => {
+    //         notification.info({message: 'Новое сообщение', description: text, key: 'msg'})
+    //     })
+    // }, [socket])
     return (
         <Layout style={{minHeight: '100%'}}>
             <MenuComponent/>
             <Layout>
-                <Header/>
+                <AdminHeader/>
                 <Content
                     style={{
                         margin: '24px 16px',

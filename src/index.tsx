@@ -6,8 +6,9 @@ import './index.css';
 import {Provider} from "react-redux";
 import {routes} from "./router";
 import {store} from "./store/store";
+import {ApolloProvider} from "@apollo/client";
+import {client} from "./graphql/client";
 
-export const BACKEND_URL = 'http://localhost:4030';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -16,10 +17,12 @@ const router = createBrowserRouter(routes)
 
 
 root.render(
-    <Provider store={store}>
-        <RouterProvider router={router}/>
-        {/*<RouterProvider router={router}/>*/}
-    </Provider>
+    <ApolloProvider client={client}>
+        <Provider store={store}>
+            <RouterProvider router={router}/>
+            {/*<RouterProvider router={router}/>*/}
+        </Provider>
+    </ApolloProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

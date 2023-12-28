@@ -6,6 +6,9 @@ import {GameInstancePage} from "./admin/pages/GameInstancePage";
 import React from "react";
 import {LoginPage} from "./user/pages/LoginPage";
 import {TeamPage} from "./user/pages/TeamPage";
+import {PreparePage} from "./user/pages/PreparePage";
+import {UserAuthProvider} from "./user/providers/AuthProvider";
+import { GamePage } from "./admin/pages/GamePage";
 
 const adminRouter = [
     {
@@ -23,6 +26,10 @@ const adminRouter = [
     {
         path: '/admin/game-instance',
         element: <AdminAuthProvider><GameInstancePage/></AdminAuthProvider>
+    },
+    {
+        path: '/admin/game',
+        element: <AdminAuthProvider><GamePage/></AdminAuthProvider>
     }
 ]
 
@@ -33,7 +40,11 @@ const userRouter = [
     },
     {
         path: '/team',
-        element: <TeamPage/>
+        element: <UserAuthProvider children={<TeamPage/>}/>
+    },
+    {
+        path: '/prepare',
+        element: <UserAuthProvider children={<PreparePage/>}/>
     },
 ]
 

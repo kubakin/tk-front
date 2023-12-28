@@ -5,7 +5,7 @@
   max-width: 900px;
   overflow: hidden;
   height: 100%;
-  z-index: 10;
+  //z-index: 10;
   bottom: 0;
 }
 
@@ -17,11 +17,11 @@
 .showUp {
   bottom: 60%;
   transition: bottom 1s 0s;
-  z-index: 10;
+  //z-index: 10;
 }
 
 .showDown {
   bottom: -50%;
   transition: bottom 1s 0s;
-  z-index: 10;
+  //z-index: 10;
 }

@@ -3,8 +3,7 @@ import {Button, Col, Form, Input, Row} from "antd";
 import styles from './index.module.scss'
 // import {Input} from "../../../ui/input";
 import React from 'react';
-import {useDispatch, useSelector} from "../../../../store/store";
-import {switchHasAccountAuth} from "../../../data/slices/global.slice";
+import {useDispatch} from "../../../../store/store";
 
 export const AuthWindow = () => {
     const {
@@ -37,16 +36,13 @@ type FieldType = {
     phone?: string;
 };
 
-const AuthForm: React.FC = () => {
-    const {hasAccountAuth} = useSelector((state) => state.userGlobalAuth);
+const AuthForm = ({hasAccountAuth}) => {
     const onFinish = (values: any) => {
-        dispatch(switchHasAccountAuth())
         console.log('Success:', values);
     };
 
     const onSwitchHandle = (e) => {
         e.preventDefault()
-        dispatch(switchHasAccountAuth())
     }
 
     const dispatch = useDispatch()

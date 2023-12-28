@@ -2,8 +2,7 @@ import {Col, Row} from "antd";
 import {Cover} from "../../components/Auth/Cover";
 import AuthForm from "../../components/Auth/AuthWindow";
 import styles from './index.module.scss'
-import {useSelector} from "../../../store/store";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export const LoginPage = () => {
 
@@ -13,17 +12,17 @@ export const LoginPage = () => {
             document.body.style.overflow = "scroll"
         };
     }, []);
-    const {hasAccountAuth} = useSelector((state) => state.userGlobalAuth);
+    const [hasAccountAuth, setHasAccountAuth] = useState(false)
     return (
         <Row className={styles.loginPage} style={{height: '90%', overflow: 'hidden'}} gutter={0}
              justify={'space-around'} align={'middle'}>
-            <Cover/>
+            <Cover hasAccountAuth={hasAccountAuth}/>
             <Col className={styles.authBlock} style={{height: '40%'}} offset={4} xs={20}>
-                {!hasAccountAuth && <AuthForm/>}
+                {!hasAccountAuth && <AuthForm hasAccountAuth={hasAccountAuth}/>}
             </Col>
 
             <Col className={styles.authBlock} style={{height: '40%'}} offset={4} xs={20}>
-                {hasAccountAuth && <AuthForm/>}
+                {hasAccountAuth && <AuthForm hasAccountAuth={hasAccountAuth}/>}
             </Col>
         </Row>
 

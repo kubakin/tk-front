@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Button} from 'antd';
 import {Header as HeaderComponent} from "antd/es/layout/layout";
+import { CreateUpdateGameModal } from 'src/admin/actions/CreateUpdateGame.modal';
 
 
-const Header: React.FC = () => {
+const AdminHeader: React.FC = () => {
+    const [createModal, setCreateModal] = useState<boolean>(false)
     return (
         <HeaderComponent style={{padding: 0}}>
+            <Button onClick={()=>setCreateModal(true)}>Test</Button>
             <Button
                 type="text"
                 // icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
@@ -16,8 +19,9 @@ const Header: React.FC = () => {
                     height: 64,
                 }}
             />
+            <CreateUpdateGameModal onClose={()=> setCreateModal(false)} visible={createModal}/>
         </HeaderComponent>
     );
 };
 
-export default Header;
+export default AdminHeader;

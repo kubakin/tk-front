@@ -43,6 +43,10 @@ const MenuComponent: React.FC = () => {
                         key: '/admin/game-instance',
                         label: 'Progress',
                     },
+                    {
+                        key: '/admin/game',
+                        label: 'Game',
+                    },
                 ]}
             />
         </Sider>
